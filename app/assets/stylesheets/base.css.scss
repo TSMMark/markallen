@@ -1,0 +1,13 @@
+html {
+  overflow-y: scroll;
+}
+
+html, body {
+  height: 100%;
+  position: relative;
+  z-index: 4;
+}
+
+body {
+  color: white;
+}

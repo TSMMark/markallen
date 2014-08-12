@@ -1,0 +1,30 @@
+section {
+  height: 100%;
+  padding: 5%;
+  text-align: center;
+
+  > h1,
+  > .continue-btn {
+    text-align: center;
+    text-shadow: 1px 1px 2px black;
+  }
+} // .section
+
+.bg-img {
+  background-size: cover;
+  background-position: center;
+  z-index: -99;
+  position: absolute;
+  left: -9999px;
+  right: -9999px;
+  visibility: hidden;
+
+  &.visible {
+    visibility: visible;
+    position: fixed;
+    top: 0;
+    left: 0;
+    min-width: 100%;
+    min-height: 100%;
+  }
+} // .bg-img
