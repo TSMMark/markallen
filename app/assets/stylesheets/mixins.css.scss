@@ -1,0 +1,5 @@
+@mixin all-anchors() {
+  &, &:hover, &:active, &:visited {
+    @content;
+  }
+}

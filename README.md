@@ -1,3 +1,3 @@
 # [MarkIvanAllen.com](http://markivanallen.com)
 
-_this is the repo for my personal site_
+_this is the repo for my personal site._

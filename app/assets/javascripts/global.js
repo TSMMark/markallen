@@ -1,14 +1,29 @@
+var $window = $(window)
+  , $body = $("body:first")
+  , $mainContent = $("#main-content:first")
+  ;
+
 window.markallen = {
-  "$window": $(window),
-  "$body": $("body:first"),
-  "$mainContent": $("#main-content:first")
+  "$window": $window,
+  "$body": $body,
+  "$mainContent": $mainContent
 }
 
-markallen.scrollTo = function($el, speed) {
+markallen.scrollTo = function($el, speed, options) {
   if (speed === undefined) {
     speed = 400;
   }
-  return $("html, body").animate({
-    scrollTop: $($el).offset().top
-  }, speed);
+  if (options === undefined) {
+    options = {};
+  }
+
+  $window.one("mousedown DOMMouseScroll mousewheel keyup", function (e) {
+    $body.stop(true, false);
+    options.onInterrupt && options.onInterrupt(e);
+  });
+
+  return $body.animate({
+    scrollTop: $($el).offset().top,
+    complete: options.onComplete
+  }, speed, options.easing);
 }
