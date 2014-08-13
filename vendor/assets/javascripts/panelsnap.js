@@ -1,3 +1,5 @@
+// THIS SCRIPT HAS BEEN MODIFIED BY MarkAllen
+
 // Utility for creating objects in older browsers
 if ( typeof Object.create !== 'function' ) {
   Object.create = function( obj ) {
@@ -442,11 +444,12 @@ if ( typeof Object.create !== 'function' ) {
 
   $.fn[pluginName] = function(options) {
 
-    var args = Array.prototype.slice.call(arguments);
+    var args = Array.prototype.slice.call(arguments)
+      , pluginInstance;
 
-    return this.each(function() {
+    this.each(function() {
 
-      var pluginInstance = $.data(this, storageName);
+      pluginInstance = $.data(this, storageName);
       if(typeof options === 'object' || options === 'init' || ! options) {
         if(!pluginInstance) {
           if(options === 'init') {
@@ -472,6 +475,8 @@ if ( typeof Object.create !== 'function' ) {
       }
 
     });
+
+    return pluginInstance;
 
   };
 

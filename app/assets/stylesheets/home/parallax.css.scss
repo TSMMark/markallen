@@ -1,3 +1,26 @@
+.continue-section {
+  opacity: 0;
+}
+
+.continue-section {
+  $size: 13px;
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  text-align: center;
+  padding-bottom: $size;
+  .continue-btn {
+    padding: $size / 2;
+    font-size: $size;
+    line-height: $size;
+    @include all-anchors() {
+      color: white;
+      text-shadow: 1px 1px 2px black;
+    }
+  }
+}
+
 .main-section {
   position: relative;
   height: 100%;
@@ -7,18 +30,31 @@
 
   > h1,
   > h2,
-  > .continue-section {
-    text-align: center;
+  > .section-content {
     position: absolute;
+    text-align: center;
     left: 0;
     right: 0;
   }
-  
-  @mixin header-size($size) {
+
+  @mixin _header-size($size) {
     font-size: $size;
     height: $size;
     line-height: $size;
     margin-top: - $size / 1.2;
+  }
+
+  @mixin header-size($size) {
+    @include _header-size($size);
+    @media (max-width: $screen-sm-max) {
+      @include _header-size($size * 0.9);
+    }
+    @media (max-width: $screen-xs-max) {
+      @include _header-size($size * 0.8);
+    }
+    @media (max-width: $screen-ss-max) {
+      @include _header-size($size * 0.6);
+    }
   }
 
   > h1,
@@ -26,7 +62,7 @@
     color: white;
     text-shadow: 1px 1px 2px black;
     margin: 0;
-    top: 50%;
+    top: 45%;
   }
 
   > h1 {
@@ -36,18 +72,9 @@
     @include header-size(56px);
   }
 
-  > .continue-section {
-    $size: 13px;
-    bottom: $size;
-    .continue-btn {
-      padding: $size / 2;
-      font-size: $size;
-      line-height: $size;
-      @include all-anchors() {
-        color: white;
-        text-shadow: 1px 1px 2px black;
-      }
-    }
+  > .section-content {
+    top: 50%;
+    font-size: 16px;
   }
 } // .section
 

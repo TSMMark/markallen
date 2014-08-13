@@ -2,11 +2,16 @@
          data-panel="0">
   <h1 class="section-header">MarkIvanAllen</h1>
   <div class="section-content">
-    <p></p>
-  </div>
-  <div class="continue-section">
-    <a class="continue-btn" href="#"
-       data-panel="1">I sorta care about that</a>
+    <p>
+      <em>
+        Co-founder and CTO of
+        <a href="http://vydia.com" target="_blank">Vydia, Inc.</a>,
+        <br/>
+        loving father of 0,
+        <br/>
+        obviously not a designer.
+      </em>
+    </p>
   </div>
 </section>
 
@@ -15,9 +20,12 @@
            data-panel="<%= i + 1 %>">
     <h2 class="section-header">Content <%= i %></h2>
     <div class="section-content"></div>
-    <div class="continue-section">
-      <a class="continue-btn" href="#"
-         data-panel="<%= i + 2 %>">next</a>
-    </div>
   </section>
 <% end %>
+
+<div class="continue-section">
+  <a class="continue-btn" href="#"
+     data-panel="1">
+    alrighty then
+  </a>
+</div>

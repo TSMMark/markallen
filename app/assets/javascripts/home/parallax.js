@@ -1,7 +1,7 @@
 var $window = markallen.$window
   , $body = markallen.$body
   , framesCount = 80
-  , frameEveryPx = 30
+  , frameEveryPx = 20
   , $images = []
   , $currentImage
   , currentframe
