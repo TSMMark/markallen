@@ -7,7 +7,7 @@ var $body = markallen.$body
   , scrollDuration = 1600
   , fadeDuration = 400
   , panelSnap
-  , lastScrollTop
+  , lastScrollTop = $window.scrollTop()
   ;
 
 var fadeOut
@@ -25,15 +25,11 @@ fadeIn = function () {
 }
 
 fadeOutContinueSection = function () {
-  $continueSection.
-    stop(true, true).
-    animate({bottom: "-200px", opacity: 0}, fadeDuration);
+  $continueSection.addClass("gone");
 }
 
 fadeInContinueSection = function () {
-  $continueSection.
-    stop(true, true).
-    animate({bottom: "0px", opacity: 1}, fadeDuration * 4);
+  $continueSection.removeClass("gone");
 }
 
 $continueBtn.click(function (e) {
@@ -42,11 +38,6 @@ $continueBtn.click(function (e) {
   fadeOutContinueSection();
 });
 
-panelSnap = $body.panelSnap({
-  slideSpeed: scrollDuration
-});
-
-// $body.on("panelsnap:finish", function (event) {
 $body.on("panelsnap:finish", function (event) {
   fadeIn();
   setTimeout(function () {
@@ -59,16 +50,26 @@ $continueBtn.on("click", function (event) {
   panelSnap.snapTo("next");
 });
 
-$window.on("scrollstart", function () {
-  var scrollTop = $window.scrollTop();
+$window.on("scroll", function () {
+  var scrollTop = $window.scrollTop()
+    , delta = scrollTop - lastScrollTop
+    ;
 
-  if (Math.abs(lastScrollTop - scrollTop) < 10) {
+  if (scrollTop <= 0) {
+    $body.trigger("panelsnap:finish");
+  }
+
+  if (Math.abs(delta) < 12) {
     return;
   }
 
   lastScrollTop = scrollTop
 
   fadeOutContinueSection();
+});
+
+panelSnap = $body.panelSnap({
+  slideSpeed: scrollDuration
 });
 
 fadeIn();

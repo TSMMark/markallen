@@ -1,5 +1,5 @@
 <section class="main-section landing-section"
-         data-panel="0">
+         data-panel="1">
   <h1 class="section-header">MarkIvanAllen</h1>
   <div class="section-content">
     <p>
@@ -17,15 +17,14 @@
 
 <% 10.times do |i| %>
   <section class="main-section"
-           data-panel="<%= i + 1 %>">
+           data-panel="<%= i + 2 %>">
     <h2 class="section-header">Content <%= i %></h2>
     <div class="section-content"></div>
   </section>
 <% end %>
 
-<div class="continue-section">
-  <a class="continue-btn" href="#"
-     data-panel="1">
-    alrighty then
+<div class="continue-section gone">
+  <a class="continue-btn" href="#">
+    <span class="fa fa-arrow-down"></span>
   </a>
 </div>
