@@ -35,4 +35,4 @@ gem 'compass-rails'
 
 gem "font-awesome-rails"
 
-gem 'rails_12factor', group: :production
+gem 'rails_12factor'
