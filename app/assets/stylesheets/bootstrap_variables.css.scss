@@ -1,2 +1,3 @@
 $brand-primary: #678AFF;
-$link-hover-color: lighten($brand-primary, 5%);
+$link-color: lighten($brand-primary, 15%);
+$link-hover-color: $link-color;
