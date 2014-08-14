@@ -7,6 +7,9 @@ var $window = markallen.$window
   , $currentImage
   , currentframe
   , invertFrames = true
+  , loadedImagesCount = 0
+  , $progressSection = $("#progress-section")
+  , $progressBar = $progressSection.find("#progress-bar")
   ;
 
 var _onScroll
@@ -14,7 +17,37 @@ var _onScroll
   , cssURI
   , preloadImages
   , applyBackground
+  , progress
+  , imageLoaded
+  , hideLoader
+  , updateProgressBar
   ;
+
+hideLoader = function () {
+  $progressSection.fadeOut(800);
+  $(".main-section, .bg-img, .continue-section").fadeIn(800);
+}
+
+updateProgressBar = function (percentageLoaded) {
+  $progressBar.css({width: percentageLoaded + "%"});
+}
+
+imageLoaded = function () {
+  loadedImagesCount += 1;
+  progress();
+}
+
+progress = function () {
+  var percentageLoaded = parseFloat(loadedImagesCount) / parseFloat(framesCount) * 100.0
+    , complete = loadedImagesCount === framesCount
+    ;
+
+  console.log(percentageLoaded, complete);
+  updateProgressBar(percentageLoaded);
+  if (complete) {
+    hideLoader();
+  }
+}
 
 preloadImages = function () {
   var i
@@ -29,7 +62,8 @@ preloadImages = function () {
         "id": "bg-img-" + i,
         "class": imgClass
       }).
-      appendTo($body));
+      appendTo($body).
+      on("load", imageLoaded));
   }
 }
 

@@ -1,3 +1,56 @@
+@mixin _header-size($size) {
+  font-size: $size;
+  height: $size;
+  line-height: $size;
+  margin-top: - $size / 1.2;
+}
+
+@mixin header-size($size) {
+  @include _header-size($size);
+  @media (max-width: $screen-sm-max) {
+    @include _header-size($size * 0.9);
+  }
+  @media (max-width: $screen-xs-max) {
+    @include _header-size($size * 0.8);
+  }
+  @media (max-width: $screen-ss-max) {
+    @include _header-size($size * 0.6);
+  }
+}
+
+#progress-section {
+  display: block;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+
+  > h1 {
+    position: absolute;
+    text-align: center;
+    right: 0;
+    left: 0;
+    top: 50%;
+    @include header-size(56px);
+  }
+
+  #progress-bar {
+    position: absolute;
+    display: block;
+    top: 55%;
+    left: 0;
+    height: 6px;
+    width: 0%;
+    background-color: white;
+  }
+}
+.main-section,
+.bg-img,
+.continue-section {
+  display: none;
+}
+
 .continue-section {
   @include transition(bottom 800ms ease-in-out);
   $size: 24px;
@@ -51,26 +104,6 @@
     text-align: center;
     left: 0;
     right: 0;
-  }
-
-  @mixin _header-size($size) {
-    font-size: $size;
-    height: $size;
-    line-height: $size;
-    margin-top: - $size / 1.2;
-  }
-
-  @mixin header-size($size) {
-    @include _header-size($size);
-    @media (max-width: $screen-sm-max) {
-      @include _header-size($size * 0.9);
-    }
-    @media (max-width: $screen-xs-max) {
-      @include _header-size($size * 0.8);
-    }
-    @media (max-width: $screen-ss-max) {
-      @include _header-size($size * 0.6);
-    }
   }
 
   > h1,
