@@ -1,10 +1,12 @@
 var $window = $(window)
+  , $document = $(document)
   , $body = $("body:first")
   , $mainContent = $("#main-content:first")
   ;
 
 window.markallen = {
   "$window": $window,
+  "$document": $document,
   "$body": $body,
   "$mainContent": $mainContent
 }

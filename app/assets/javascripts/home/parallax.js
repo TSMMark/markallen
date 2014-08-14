@@ -1,10 +1,12 @@
 var $window = markallen.$window
+  , $document = markallen.$document
   , $body = markallen.$body
   , framesCount = 80
-  , frameEveryPx = 20
+  , frameEveryPx = 24
   , $images = []
   , $currentImage
   , currentframe
+  , invertFrames = true
   ;
 
 var _onScroll
@@ -40,6 +42,9 @@ cssURI = function (uri) {
 }
 
 applyBackground = function (i) {
+  if (invertFrames) {
+    i = framesCount - i - 1;
+  }
   if (i === currentframe) {
     return;
   }
